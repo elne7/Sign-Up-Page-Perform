@@ -8,11 +8,8 @@ class CustomContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      height: 200,
+    return SizedBox(
+      height: 280,
       child: Column(
         children: [
           Image.asset(image),

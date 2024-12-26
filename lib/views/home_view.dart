@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:simple_shopping_app/widgets/custom_grid_view.dart';
 import 'package:simple_shopping_app/widgets/custom_list_view.dart';
 import 'package:simple_shopping_app/widgets/custom_page_view.dart';
 
@@ -18,20 +17,25 @@ class HomeView extends StatelessWidget {
         backgroundColor: Colors.blue,
         elevation: 4,
       ),
-      body: Column(
-        children: [
-          const Text(
-            "Our Products",
-            style: TextStyle(fontSize: 20),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Text(
+                "Our Products",
+                style: TextStyle(fontSize: 20),
+              ),
+              CustomPageView(),
+              // CustomGridView(),
+              const Text(
+                "Our Offers",
+                style: TextStyle(fontSize: 20),
+              ),
+              CustomListView(),
+            ],
           ),
-          CustomPageView(),
-          CustomGridView(),
-          const Text(
-            "Our Offers",
-            style: TextStyle(fontSize: 20),
-          ),
-          CustomListView(),
-        ],
+        ),
       ),
     );
   }

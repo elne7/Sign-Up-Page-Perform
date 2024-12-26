@@ -8,10 +8,10 @@ void main() {
 class SimpleShoppingApp extends StatelessWidget {
   const SimpleShoppingApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Simple Shopping App',
       home: HomeView(),
     );

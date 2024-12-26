@@ -14,16 +14,20 @@ class CustomListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (context, index) {
-        return Expanded(
-          child: CustomContainer(
-            image: offers[index],
-            offerName: 'Offer ${index + 1}',
-          ),
-        );
-      },
+    return SizedBox(
+      height: 600,
+      child: ListView.builder(
+        itemCount: offers.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: CustomContainer(
+              image: offers[index],
+              offerName: 'Offer ${index + 1}',
+            ),
+          );
+        },
+      ),
     );
   }
 }
