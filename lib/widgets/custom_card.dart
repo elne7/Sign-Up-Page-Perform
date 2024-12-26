@@ -8,21 +8,54 @@ class CustomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
+    return Container(
+      height: 100,
+      width: 100,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      clipBehavior: Clip.none,
+      child: Row(
         children: [
-          Image.asset(image),
-          Text(productName),
-          IconButton(
-            onPressed: () {
-              const SnackBar(
-                content: Text('Item added to the cart'),
-              );
-            },
-            icon: const Icon(Icons.add_shopping_cart),
+          Image.asset(
+            image,
+            height: 100,
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(productName),
+              IconButton(
+                onPressed: () {
+                  const snackBar = SnackBar(
+                    content: Text('Item added to the cart'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+                icon: const Icon(Icons.add_shopping_cart),
+              )
+            ],
           )
         ],
       ),
     );
   }
 }
+
+// Card(
+//       child: Column(
+//         children: [
+//           Image.asset(image, height: 100,),
+//           Text(productName),
+//           IconButton(
+//             onPressed: () {
+//               const SnackBar(
+//                 content: Text('Item added to the cart'),
+//               );
+//             },
+//             icon: const Icon(Icons.add_shopping_cart),
+//           )
+//         ],
+//       ),
+//     );

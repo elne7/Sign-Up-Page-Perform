@@ -9,7 +9,7 @@ class CustomGridView extends StatelessWidget {
     {"image": "assets/images/Earpods.jpg", "productName": "Earpods"},
     {
       "image": "assets/images/ExternalDesk.jpg",
-      "productName": "External HardDesk"
+      "productName": "External\nHardDesk"
     },
     {"image": "assets/images/IPhone.jpg", "productName": "IPhone"},
     {"image": "assets/images/Microphone.jpg", "productName": "Microphone"},
@@ -18,13 +18,21 @@ class CustomGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: 6,
-      gridDelegate:
-          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-      itemBuilder: (context, index) => CustomCard(
-        image: products[index]['image']!,
-        productName: products[index]['productName']!,
+    return SizedBox(
+      height: 300,
+      child: GridView.builder(
+        itemCount: 6,
+        clipBehavior: Clip.none,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1.5,
+          crossAxisSpacing: 15,
+          mainAxisSpacing: 100,
+        ),
+        itemBuilder: (context, index) => CustomCard(
+          image: products[index]['image']!,
+          productName: products[index]['productName']!,
+        ),
       ),
     );
   }

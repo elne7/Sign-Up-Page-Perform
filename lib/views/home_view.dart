@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:simple_shopping_app/widgets/custom_grid_view.dart';
 import 'package:simple_shopping_app/widgets/custom_list_view.dart';
 import 'package:simple_shopping_app/widgets/custom_page_view.dart';
+import 'package:simple_shopping_app/widgets/custom_text.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -22,17 +24,20 @@ class HomeView extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Text(
-                "Our Products",
-                style: TextStyle(fontSize: 20),
+              const CustomText(text: 'Our Products'),
+              const SizedBox(
+                height: 5,
               ),
               CustomPageView(),
-              // CustomGridView(),
-              const Text(
-                "Our Offers",
-                style: TextStyle(fontSize: 20),
+              CustomGridView(),
+              const SizedBox(
+                height: 100,
               ),
+              const CustomText(text: 'Our Offers'),
               CustomListView(),
+              const SizedBox(
+                height: 10,
+              ),
             ],
           ),
         ),
