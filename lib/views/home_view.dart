@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-// import 'package:simple_shopping_app/widgets/custom_card.dart';
-// import 'package:simple_shopping_app/widgets/custom_container.dart';
 import 'package:simple_shopping_app/widgets/custom_grid_view.dart';
+import 'package:simple_shopping_app/widgets/custom_list_view.dart';
 import 'package:simple_shopping_app/widgets/custom_page_view.dart';
 
 class HomeView extends StatelessWidget {
-  HomeView({super.key});
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +30,7 @@ class HomeView extends StatelessWidget {
             "Our Offers",
             style: TextStyle(fontSize: 20),
           ),
-          ListView.builder(
-            itemBuilder: (context, index) {
-              return const Text('data');
-            },
-          )
+          CustomListView(),
         ],
       ),
     );
