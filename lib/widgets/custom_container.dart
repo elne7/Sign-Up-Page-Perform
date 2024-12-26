@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CustomOfferContainer extends StatelessWidget {
-  const CustomOfferContainer({super.key});
+class CustomContainer extends StatelessWidget {
+  const CustomContainer({super.key, required this.image, this.offerName});
+
+  final String image;
+  final String? offerName;
 
   @override
   Widget build(BuildContext context) {
@@ -9,11 +12,11 @@ class CustomOfferContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8)
       ),
-      height: 150,
+      height: 200,
       child: Column(
         children: [
-          Image.asset('name'),
-          const Text('Offer name')
+          Image.asset(image),
+          Text(offerName ?? '')
         ],
       ),
     );

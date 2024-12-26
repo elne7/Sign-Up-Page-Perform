@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_shopping_app/widgets/custom_card.dart';
-import 'package:simple_shopping_app/widgets/custom_offer_container.dart';
+import 'package:simple_shopping_app/widgets/custom_container.dart';
+import 'package:simple_shopping_app/widgets/custom_page_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -23,24 +24,9 @@ class HomeView extends StatelessWidget {
             "Our Products",
             style: TextStyle(fontSize: 20),
           ),
-          PageView(
-            children: [
-              SizedBox(
-                height: 200,
-                child: Image.asset('name'),
-              ),
-              SizedBox(
-                height: 200,
-                child: Image.asset('name'),
-              ),
-              SizedBox(
-                height: 200,
-                child: Image.asset('name'),
-              ),
-            ],
-          ),
+          CustomPageView(),
           GridView.builder(
-            itemCount: 4,
+            itemCount: 6,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2),
             itemBuilder: (context, index) => const CustomCard(),
@@ -50,7 +36,7 @@ class HomeView extends StatelessWidget {
             style: TextStyle(fontSize: 20),
           ),
           ListView.builder(itemBuilder: (context, index) {
-            return const CustomOfferContainer();
+            return const Text('data');
           },)
         ],
       ),
