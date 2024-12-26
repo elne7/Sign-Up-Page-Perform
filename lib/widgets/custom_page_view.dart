@@ -14,7 +14,7 @@ class CustomPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageView.builder(
       itemBuilder: (context, index) {
-        CustomContainer(image: images[index]);
+        return CustomContainer(image: images[index]);
       },
     );
   }

@@ -6,8 +6,6 @@ class CustomCard extends StatelessWidget {
   final String image;
   final String productName;
 
-  // CardModel card;
-
   @override
   Widget build(BuildContext context) {
     return Card(
