@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key});
+  const CustomCard({super.key, required this.image, required this.productName});
+
+  final String image;
+  final String productName;
+
+  // CardModel card;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Column(
         children: [
-          Image.asset('name'),
-          const Text('Product name'),
+          Image.asset(image),
+          Text(productName),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              const SnackBar(
+                content: Text('Item added to the cart'),
+              );
+            },
             icon: const Icon(Icons.add_shopping_cart),
           )
         ],
