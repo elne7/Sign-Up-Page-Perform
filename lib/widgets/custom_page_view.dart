@@ -12,11 +12,8 @@ class CustomPageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8)
-      ),
+    return SizedBox(
+      height: 280,
       child: PageView.builder(
         itemCount: 3,
         itemBuilder: (context, index) {

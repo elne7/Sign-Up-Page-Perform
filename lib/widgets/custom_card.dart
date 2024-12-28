@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class CustomCard extends StatelessWidget {
@@ -13,19 +14,36 @@ class CustomCard extends StatelessWidget {
       width: 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: const Offset(0, 3),
+          ),
+        ],
       ),
       clipBehavior: Clip.none,
       child: Row(
         children: [
           Image.asset(
             image,
-            height: 100,
+            height: 110,
+          ),
+          const SizedBox(
+            width: 18,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(productName),
+              AutoSizeText(
+                productName,
+                style: const TextStyle(fontSize: 16),
+                minFontSize: 14,
+                overflow: TextOverflow.ellipsis,
+              ),
               IconButton(
                 onPressed: () {
                   const snackBar = SnackBar(
@@ -42,20 +60,3 @@ class CustomCard extends StatelessWidget {
     );
   }
 }
-
-// Card(
-//       child: Column(
-//         children: [
-//           Image.asset(image, height: 100,),
-//           Text(productName),
-//           IconButton(
-//             onPressed: () {
-//               const SnackBar(
-//                 content: Text('Item added to the cart'),
-//               );
-//             },
-//             icon: const Icon(Icons.add_shopping_cart),
-//           )
-//         ],
-//       ),
-//     );

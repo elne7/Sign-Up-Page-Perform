@@ -31,7 +31,7 @@ class HomeView extends StatelessWidget {
               CustomPageView(),
               CustomGridView(),
               const SizedBox(
-                height: 100,
+                height: 30,
               ),
               const CustomText(text: 'Our Offers'),
               CustomListView(),
