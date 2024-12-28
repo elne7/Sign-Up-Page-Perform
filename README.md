@@ -19,9 +19,9 @@ This is a basic Flutter project showcasing a simple shopping app showing some pr
 
 **Customised Widgets**
 
-- #CustomPageView.
-- #CustomGridView.
-- #CustomListView.
-- #CustomCard.
-- #CustomContainer.
-- #CustomText.
+- CustomPageView.
+- CustomGridView.
+- CustomListView.
+- CustomCard.
+- CustomContainer.
+- CustomText.
