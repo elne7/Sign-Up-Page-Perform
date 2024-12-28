@@ -7,14 +7,17 @@ class CustomCard extends StatelessWidget {
   final String image;
   final String productName;
 
+  // Making a card as a container with some edits
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 100,
       width: 100,
+      // Giving the container some decorations
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         color: Colors.white,
+        // Giving each card a shadow
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.5),
@@ -25,6 +28,7 @@ class CustomCard extends StatelessWidget {
         ],
       ),
       clipBehavior: Clip.none,
+      // Building the card content
       child: Row(
         children: [
           Image.asset(
@@ -45,6 +49,7 @@ class CustomCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
               ),
               IconButton(
+                // Making the icon to show a message when pressing on it
                 onPressed: () {
                   const snackBar = SnackBar(
                     content: Text('Item added to the cart'),

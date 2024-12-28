@@ -8,16 +8,16 @@ class CustomContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
+    return ClipRRect( // Wrapping the container with a ClipRRect to control its border
       borderRadius: BorderRadius.circular(16),
-      child: SizedBox(
+      child: SizedBox( // Giving the container padding space
         height: 280,
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery.of(context).size.width, // Making the width of the container as the width of the device
         child: Column(
           children: [
             Image.asset(image),
             Text(
-              offerName ?? '',
+              offerName ?? '', // Making the text to show nothing when its value be null
               style: const TextStyle(fontSize: 20),
             ),
           ],

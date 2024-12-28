@@ -11,9 +11,9 @@ class SimpleShoppingApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false, // Remove the debug sign from the screen
       title: 'Simple Shopping App',
-      home: HomeView(),
+      home: HomeView(), // Displaying the Home View page
     );
   }
 }
