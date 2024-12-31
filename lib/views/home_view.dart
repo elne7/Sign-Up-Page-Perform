@@ -35,7 +35,7 @@ class HomeView extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              const CustomText(text: 'Our Offers'),
+              const CustomText(text: 'Hot Offers'),
               CustomListView(), // Display a list view
               const SizedBox(
                 height: 10,

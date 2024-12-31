@@ -42,6 +42,7 @@ class CustomCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              // Creating a text with a fixed size
               AutoSizeText(
                 productName,
                 style: const TextStyle(fontSize: 16),
