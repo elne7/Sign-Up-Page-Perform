@@ -11,8 +11,9 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
-  GlobalKey<FormState> formKey = GlobalKey();
+  GlobalKey<FormState> formKey = GlobalKey(); // Initialising a formkey to control the form validation
 
+  // Initializing the textfields controllers
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
@@ -36,7 +37,7 @@ class _SignUpViewState extends State<SignUpView> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
-          key: formKey,
+          key: formKey, // Giving the form key to the form
           child: ListView(
             children: [
               const SizedBox(
@@ -52,6 +53,8 @@ class _SignUpViewState extends State<SignUpView> {
               const SizedBox(
                 height: 20,
               ),
+
+              // Initializing the text form field
               CustomTextFormField(
                 hintText: 'Full Name',
                 controller: nameController,
@@ -133,16 +136,13 @@ class _SignUpViewState extends State<SignUpView> {
               const SizedBox(
                 height: 50,
               ),
+
+              // Initializing an ElevatedButton to submit
               ElevatedButton(
                 onPressed: () {
+                  // Checking if the form validation is correct
                   if (formKey.currentState!.validate()) {
                     showMyDialog();
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const HomeView(),
-                    //   ),
-                    // );
                   }
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
@@ -158,6 +158,7 @@ class _SignUpViewState extends State<SignUpView> {
     );
   }
 
+  // Initializing a function shows a dialog
   Future<void> showMyDialog() async {
     return showDialog<void>(
       context: context,
@@ -172,6 +173,7 @@ class _SignUpViewState extends State<SignUpView> {
                 style: TextStyle(color: Colors.black),
               ),
               onPressed: () {
+                // Here it performs navigation to go to the app
                 Navigator.pop(context);
                 Navigator.push(
                   context,
