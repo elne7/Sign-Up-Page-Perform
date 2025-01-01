@@ -1,6 +1,7 @@
 # sign_up_page_perform
 
-Considering my last project the `Simple Shopping App`, This Task is a complement for the previous project
+Considering my last project the `Simple Shopping App`, This Task is a complement for the previous project.
+You can see the shopping app from here: [https://github.com/elne7/Simple-Shopping-App.git]
 
 **Features:**
 
