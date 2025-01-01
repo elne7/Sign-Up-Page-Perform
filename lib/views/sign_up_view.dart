@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_shopping_app/views/home_view.dart';
 import 'package:simple_shopping_app/widgets/custom_text_form_field.dart';
 import 'package:validators/validators.dart';
 
@@ -10,10 +11,15 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
-  String fullName = '';
-  String email = '';
-  dynamic password;
-  dynamic confirmPassword;
+  GlobalKey<FormState> formKey = GlobalKey();
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passController = TextEditingController();
+  TextEditingController confirmPassController = TextEditingController();
+
+  bool hiddenPassword = true;
+  bool hiddenConfirmPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -29,96 +35,155 @@ class _SignUpViewState extends State<SignUpView> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView(
-          children: [
-            const SizedBox(
-              height: 50,
-            ),
-            const Text(
-              'Sign Up',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+        child: Form(
+          key: formKey,
+          child: ListView(
+            children: [
+              const SizedBox(
+                height: 50,
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            CustomTextFormField(
-              hintText: 'Full Name',
-              onChanged: (value) {
-                fullName = value;
-              },
-              validator: (value) {
-                if (value != null) {
-                  if (isLowercase(value[0])) {
-                    return 'The first letter must be capitalized';
-                  }
-                }
-              },
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            CustomTextFormField(
-              hintText: 'E-mail',
-              onChanged: (value) {
-                email = value;
-              },
-              validator: (value) {
-                if (value != null) {
-                  if (value.contains('@')) {
-                    return 'The email maust have \'@\'';
-                  }
-                }
-              },
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            CustomTextFormField(
-              hintText: 'Password',
-              onChanged: (value) {
-                password = value;
-              },
-              validator: (value) {
-                if (value != null) {
-                  if (value.length < 6) {
-                    return 'The Password must have at least 6 characters';
-                  }
-                }
-              },
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            CustomTextFormField(
-              hintText: 'Confirm Password',
-              onChanged: (value) {
-                confirmPassword = value;
-              },
-              validator: (value) {
-                if (value != null) {
-                  if (value != password) {
-                    return 'It is not same as the password';
-                  }
-                }
-              },
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-              child: const Text(
-                'Submit',
-                style: TextStyle(color: Colors.white),
+              const Text(
+                'Sign Up',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            )
-          ],
+              const SizedBox(
+                height: 20,
+              ),
+              CustomTextFormField(
+                hintText: 'Full Name',
+                controller: nameController,
+                validator: (value) {
+                  if (value != null) {
+                    if (isLowercase(value[0])) {
+                      return 'The first letter must be capitalized';
+                    }
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              CustomTextFormField(
+                hintText: 'E-mail',
+                controller: emailController,
+                validator: (value) {
+                  if (value != null) {
+                    if (!value.contains('@')) {
+                      return 'The email maust have \'@\'';
+                    }
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              CustomTextFormField(
+                hintText: 'Password',
+                controller: passController,
+                obscureText: hiddenPassword,
+                icon: IconButton(
+                  onPressed: () {
+                    hiddenPassword = !hiddenPassword;
+                    setState(() {});
+                  },
+                  icon: Icon(
+                      hiddenPassword ? Icons.visibility : Icons.visibility_off),
+                ),
+                validator: (value) {
+                  if (value != null) {
+                    if (value.length < 6) {
+                      return 'The Password must have at least 6 characters';
+                    }
+                  } else {
+                    return 'Please enter a password';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              CustomTextFormField(
+                hintText: 'Confirm Password',
+                controller: confirmPassController,
+                obscureText: hiddenConfirmPassword,
+                icon: IconButton(
+                  onPressed: () {
+                    hiddenConfirmPassword = !hiddenConfirmPassword;
+                    setState(() {});
+                  },
+                  icon: Icon(hiddenConfirmPassword
+                      ? Icons.visibility
+                      : Icons.visibility_off),
+                ),
+                validator: (value) {
+                  if (value != null) {
+                    if (value != passController.text) {
+                      return 'It is not same as the password';
+                    }
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    showMyDialog();
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => const HomeView(),
+                    //   ),
+                    // );
+                  }
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+                child: const Text(
+                  'Submit',
+                  style: TextStyle(color: Colors.white),
+                ),
+              )
+            ],
+          ),
         ),
       ),
+    );
+  }
+
+  Future<void> showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Signing Up'),
+          content: const Text('Account Successfully Created!'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                'Go to the app',
+                style: TextStyle(color: Colors.black),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomeView(),
+                  ),
+                );
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
