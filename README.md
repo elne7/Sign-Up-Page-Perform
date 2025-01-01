@@ -1,27 +1,21 @@
-# simple_shopping_app
+# sign_up_page_perform
 
-This is a basic Flutter project showcasing a simple shopping app showing some products and offers.
+Considering my last project the `Simple Shopping App`, This Task is a complement for the previous project
 
 **Features:**
 
-- Uses an AppBar with a centered title "Shopping App".
-- Displays a `Column` widget to arrange the content vertically within the body.
-- Displays a `PageView` widget to show some product images horizontally within the body.
-- Displays a `GridView` widget to show some product cards showing 2 cards in each row.
-- Each card in the grid view shows the product image and its name with an `Add_To_Cart` icon.
-- The add to cart icon displays a `SnackBar` widget saying "Item added to the cart" when pressing it.
-- Displays a `ListView` widget to show some product Offers vertically.
+- Starts with a sign up page before entering the app.
+- Displays a `ListView` widget to arrange the content vertically within the body.
+- Displays 4 `TextFormField` widgets to insert the user information.
+- Each textformfield has its spisific `Validator` to check if the inserted data is correct as required.
+- Displays a `ElevatedButton` widget to submit the sign up when all the validators are correct.
+- The elevatedbutton shows a `Dialog` widget says that the "Account Successfully Created".
+- Also the dialog has a `TextButton` widget as it navigate the user to the shop app when pressing on it.
 
 **Dependencies:**
 
-* This project relies on the `flutter` package.
-* Uses the `auto_size_text` package to control the size of the card's text.
+* Uses the `Validators` package to control some validates on the text form field.
 
 **Customised Widgets**
 
-- CustomPageView.
-- CustomGridView.
-- CustomListView.
-- CustomCard.
-- CustomContainer.
-- CustomText.
+- CustomTextFormField
